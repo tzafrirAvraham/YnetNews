@@ -126,22 +126,22 @@ class ynetNewsPage {
 
     async connectDB(){
         startStep('connectDB');       
-         //mongoose.connect('mongodb+srv://yaal-2122:wsmJQ3ggbFxFtHX@cluster0.qnlfmxm.mongodb.net/GQ-Dashboard')
+         mongoose.connect('mongodb+srv://yaal-2122:wsmJQ3ggbFxFtHX@cluster0.qnlfmxm.mongodb.net/GQ-Dashboard?')
         //mongoose.connect('mongodb+srv://shilo:a72Y53vXKjhNDAJn@chatnews.uaripa9.mongodb.net/GQ-Dashboard')
-        mongoose.connect('mongodb+srv://tzafriravram:jNK2c1HoPxz8EkAn@tzafrirdata.4gcmmsq.mongodb.net/?retryWrites=true&w=majority&appName=tzafrirData')
+        //mongoose.connect('mongodb+srv://tzafriravram:jNK2c1HoPxz8EkAn@tzafrirdata.4gcmmsq.mongodb.net/?retryWrites=true&w=majority&appName=tzafrirData')
         .then(() => console.log('Connected!'));   
 
        
     endStep(); 
 }
-   async updateDB()
-   { this.connectDB();
-       const filter = { count: "11" };
-        const update = { title: "Blabla" };        
-        let doc1=await Ynet.findOne(filter, { timeout: 30000 });
-        console.log("updateDB status - "+doc1);
-//        let doc = await Ynet.findOneAndUpdate(filter, update);
-   }
+//    async updateDB()
+//    { this.connectDB();
+//        const filter = { count: "11" };
+//         const update = { title: "Blabla" };        
+//         let doc1=await Ynet.findOne(filter, { timeout: 30000 });
+//         console.log("updateDB status - "+doc1);
+// //        let doc = await Ynet.findOneAndUpdate(filter, update);
+//    }
 
 
     //----------------------------------------------------------
