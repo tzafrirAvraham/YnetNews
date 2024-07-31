@@ -61,10 +61,11 @@ class BasePage{
     async getAtribute (value,att){
         // await value.waitForDisplayed({ timeout: 20000 });
         // await value.scrollIntoView();
-        await browser.pause(1000);
+        let start= Date.now();;
         let tempValue="";
         try {
-            tempValue=await value.getAttribute(att);
+            while (Date.now() - start < 10000) {
+                tempValue = await value.getAttribute(att);}
             if (tempValue.length==0)
             {
                 tempValue="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Ynet_website_logo.svg/1200px-Ynet_website_logo.svg.png";

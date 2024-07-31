@@ -16,6 +16,13 @@ exports.config = {
         // 'path/to/excluded/files'
     ],
 
+    suites: {
+        allTests: [
+            './test/specs/ynetTest.e2e.js',
+            './test/specs/israelHyom.e2e.js'
+        ],
+    },
+
 
 
     maxInstances: 1,
@@ -26,7 +33,7 @@ exports.config = {
         browserName: 'chrome',
         'goog:chromeOptions': {
             args: [
-               '--headless',
+               //'--headless',
               '--incognito',
               '--disable-blink-features=AutomationControlled',
               '--disable-popup-blocking',
