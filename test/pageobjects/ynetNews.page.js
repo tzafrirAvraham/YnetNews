@@ -257,10 +257,9 @@ class ynetNewsPage {
         
         endStep();
         startStep("back to home page");
-        await browser.pause(2000);
         await browser.back();
         endStep();
-        await browser.pause(7000);
+        await browser.pause(4000);
 
     }
 

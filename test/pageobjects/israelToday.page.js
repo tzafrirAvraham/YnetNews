@@ -145,7 +145,6 @@ class isrealHyomPage {
             let author= await authorList[i].getText(); 
             await BasePage.clickButton(list[i+1]);
             await this.printData(arr1,num,time,author);
-            browser.pause(5000)
             num++;
             endStep();
             
@@ -197,10 +196,9 @@ class isrealHyomPage {
         
         endStep();
         startStep("back to home page");
-        await browser.pause(2000);
         await browser.back();
         endStep();
-        await browser.pause(7000);
+        await browser.pause(3000);
 
     }
 

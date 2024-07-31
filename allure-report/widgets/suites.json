@@ -1,1 +1,1 @@
-{"total":1,"items":[{"uid":"82c806621d6358ffb3314a35a2dcaf60","name":"Articles Data","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}
+{"total":2,"items":[{"uid":"82c806621d6358ffb3314a35a2dcaf60","name":"Articles Data","statistic":{"failed":0,"broken":0,"skipped":0,"passed":6,"unknown":0,"total":6}},{"uid":"1e2a7f8d9bf009cd8974b03752e5bf08","name":"DataBase Connection","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}

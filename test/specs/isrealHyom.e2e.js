@@ -5,7 +5,7 @@ const Ynet= require('../../model/ynet.js');
 
 
 
-describe('Articles Data', () => {
+describe('DataBase Connection', () => {
     let articleArray;
     let num=1;
     before('Connect DB ', async()=>{
@@ -16,7 +16,7 @@ describe('Articles Data', () => {
 
 
 
-    it('Main Article Data', async()=>{
+    it('10 articles data ', async()=>{
         startStep('click on article '+num);
         await isrealHyomPage.dataFromTenArticles(articleArray,num);
         endStep();
