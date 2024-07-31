@@ -19,7 +19,7 @@ exports.config = {
     suites: {
         allTests: [
             './test/specs/ynetTest.e2e.js',
-            './test/specs/israelHyom.e2e.js'
+            './test/specs/isrealHyom.e2e.js'
         ],
     },
 
