@@ -8,7 +8,7 @@ const Ynet= require('../../model/ynet.js');
 describe('DataBase Connection', () => {
     let articleArray;
     let num=1;
-    before('Connect DB ', async()=>{
+    it('Connect DB ', async()=>{
     await browser.url('https://www.israelhayom.co.il/')
     await isrealHyomPage.connectDB();
     })
@@ -16,7 +16,7 @@ describe('DataBase Connection', () => {
 
 
 
-    it('10 articles data ', async()=>{
+    it('10 articles data isreal hayom', async()=>{
         startStep('click on article '+num);
         await isrealHyomPage.dataFromTenArticles(articleArray,num);
         endStep();

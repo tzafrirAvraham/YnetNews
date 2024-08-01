@@ -7,7 +7,7 @@ const {startStep, endStep, addStep} = require('@wdio/allure-reporter').default;
 describe('DataBase Connection', () => {
     let articleArray;
     let num=1;
-    before('Connect DB ', async()=>{
+    it('Connect DB ', async()=>{
     await browser.url('https://www.n12.co.il/')
     await browser.maximizeWindow();
     await twelveNewsPage.connectDB();
@@ -16,7 +16,7 @@ describe('DataBase Connection', () => {
 
 
 
-    it('10 articles data ', async()=>{
+    it('N12 10 articles data ', async()=>{
         startStep('click on article '+num);
         await twelveNewsPage.dataFromTenArticlesN12(articleArray,num);
         endStep();
