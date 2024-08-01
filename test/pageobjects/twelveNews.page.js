@@ -1,31 +1,31 @@
-
+       
 const { default: mongoose } = require('mongoose');
 const BasePage = require('../pageobjects/base.page');
 const {startStep, endStep, addStep} = require('@wdio/allure-reporter').default;
-const Isreal= require('../../model/isrealHyom.js');
+const Twelve= require('../../model/twelve.js');
 
 
 
 
 
-class isrealHyomPage {
+class twelvePage {
 
 
 
 //////////////////////////data from article///////////////////////////////////////////////////
 
-    get titleText(){ return $("//*[@class='single-post-title']/*[@class='titleText']");}
-    get subTitleText(){ return $("//*[@class='single-post-subtitle']");}
-    get summaryText(){ return $$("//*[@id='text-content']/p[not(div)]");}
-    get imageText(){ return $$("//*[contains(@class, 'single-post-media_image__img')][@src]");}
-    get dateTimeText(){ return $("span[class='single-post-meta-dates']");}
-    // get blog(){return $('.blogs-auto-feed-header a');}
-    get authorsText(){return $$("//article[contains(@class, 'post post-')]/*[@class='post-content ']//*[@class='post-meta']/span")}
+    get titleText(){ return $("section h1");}
+    get subTitleText(){ return $("section h2");}
+    get summaryText(){ return $$("section[class='article-body'] p");}
+    get imageText(){ return $("(//figure/img)[1]");}
+    //get dateTimeText(){ return $("span[class='single-post-meta-dates']");}
+    get date(){return $("//*[@class='display-date']/span[1]");}
+    //get authorsText(){return $$("//article[contains(@class, 'post post-')]/*[@class='post-content ']//*[@class='post-meta']/span")}
     
 /////////////////////////////articles/////////////////////////////////////////////////
 
-    get articlesButton(){ return $$("//article[contains(@class, 'post post-')]/*[@class='post-media']");}
-    get time(){return $$("//article[contains(@class, 'post post-')]/*[@class='post-content ']//*[@class='post-meta']/time")}
+    get articlesButton(){ return $$("//*[@id='part1']/ul/li/figure");}
+    get time(){return $("//*[@class='display-date']/span[2]")}
 
 
    
@@ -65,12 +65,30 @@ class isrealHyomPage {
         let status=await this.time.isExisting();
         if (status)
           {console.log('Shilo dateTime '+status)
-          temp= await BasePage.getText(this.dateTimeText);} 
+          temp= await BasePage.getText(this.time);} 
        else 
         {console.log('Shilo dateTime '+status)
             temp= '00:00'}
         return temp;
     }
+
+    // async getDate(){
+    //     let temp;
+    //     startStep('print date text');       
+    //     endStep();
+    //     let status=await this.date.isExisting();
+    //     if (status)
+    //       {console.log('Shilo date '+status)
+    //       temp= await BasePage.getText(await this.date);} 
+    //    else 
+    //     {console.log('Shilo date '+status)
+    //         const date = new Date();
+    //         let day =  date.getDate();
+    //         let month = date.getMonth()+1;
+    //         let year = date.getFullYear();
+    //         temp=day+"/"+month+"/"+year;
+    //    }
+    // }
 
     async getDate(){
         startStep('print Time text');       
@@ -89,9 +107,9 @@ class isrealHyomPage {
     async getImg(){
 
         startStep('print img text');       
-        let list= await this.imageText;
+        // let list= await this.imageText;
         endStep();
-        return await BasePage.getAtribute(list[0],'src');
+        return await BasePage.getAtribute(this.imageText,'src');
         
 
     }
@@ -109,7 +127,7 @@ class isrealHyomPage {
 
     async connectDB(){
         startStep('connectDB');       
-         //mongoose.connect('mongodb+srv://yaal-2122:wsmJQ3ggbFxFtHX@cluster0.qnlfmxm.mongodb.net/GQ-Dashboard?')
+        //mongoose.connect('mongodb+srv://yaal-2122:wsmJQ3ggbFxFtHX@cluster0.qnlfmxm.mongodb.net/GQ-Dashboard?')
         //mongoose.connect('mongodb+srv://shilo:a72Y53vXKjhNDAJn@chatnews.uaripa9.mongodb.net/GQ-Dashboard')
         mongoose.connect('mongodb+srv://tzafriravram:jNK2c1HoPxz8EkAn@tzafrirdata.4gcmmsq.mongodb.net/?retryWrites=true&w=majority&appName=tzafrirData')
         .then(() => console.log('Connected!'));   
@@ -133,18 +151,16 @@ class isrealHyomPage {
  
 
     
-    async dataFromTenArticles(arr1,num){
+    async dataFromTenArticlesN12(arr1,num){
         let list= await this.articlesButton;
-        let timeList = await this.time;
-        let authorList= await this.authorsText;
+       
 
         for(let i=0; i< 9; i++){
             startStep(" clicking on article number "+ (i+1));
             console.log("num "+num);
-            let time= await timeList[i].getText();
-            let author= await authorList[i].getText(); 
-            await BasePage.clickButton(list[i+1]);
-            await this.printData(arr1,num,time,author);
+            
+            await BasePage.clickButton(list[i]);
+            await this.printData(arr1,num);
             num++;
             endStep();
             
@@ -153,52 +169,59 @@ class isrealHyomPage {
 
 
 
-    async printData(arr1,num, time, author){
+    async printData(arr1,num){
         
         
         startStep("printing the data of the article");
         let title1=await this.getTitle();
         let subTitle1=await this.getSubTitle();
-        let time1= time
+        let time1= await this.getTime();
         let date1=await this.getDate();
         let img1=await this.getImg();
-        console.log("img link: " +await this.getImg());
+        console.log("img link: " +img1);
          if (img1?.length<1)         
-         {img1='https://assets-global.website-files.com/63d8fee58e897e0396075286/64ca2a626e35720cb0af8c87_1%20YNET%20%D7%99%D7%93%D7%99%D7%A2%D7%95%D7%AA-04.png'}
+         {img1='https://img.mako.co.il/2022/03/13/N12logo.png'}
         let summery1=await this.getSummery();
-        let author1=author;
-        // console.log("title is: " +await this.getTitle());
-        // console.log("img link: " +await this.getImg());
-        // console.log("sub title: " +await this.getSubTitle());
-        // console.log("time: " + time1)
-        // console.log("date: " +await this.getDate());
-        // console.log("summery : " +await this.getSummery());
+        let author1="N12";
+        console.log("title is: " +title1);
+        console.log("img link: " +img1);
+        console.log("sub title: " +subTitle1);
+        console.log("time: " + time1)
+        console.log("date: " +date1);
+        console.log("summery : " +summery1);
         console.log("-----------------------------------------------------------------------------------------------------------------------------------------------");
         console.log("num "+num);
         arr1=[{title:title1, subTitle:subTitle1,time:time1, date:date1, image:img1, summary:summery1,author:author1,count: num}];
          
         const filter = { count: num.toString() };
-        let doc1=await Isreal.findOne(filter);
-        console.log("filter - "+doc1);;
+        let doc1=await Twelve.findOne(filter);
+        // console.log("filter - "+doc1);;
         if (doc1== null)
         {
             console.log("filter - "+doc1);
-        const ynet= await Isreal.create(arr1[0]);
+        const twelve12= await Twelve.create(arr1[0]);
         console.log("Insert "+num+" verify")
         }
         else{
             console.log("filter - "+doc1);
             const update = {title:title1, subTitle:subTitle1,time:time1, date:date1, image:img1, summary:summery1,author:author1,count: num}; 
-            let doc = await Isreal.findOneAndUpdate(filter, update);
+            let doc = await Twelve.findOneAndUpdate(filter, update);
             console.log("Update "+num+" verify")
         }
         
         
         endStep();
         startStep("back to home page");
-        await browser.back();
+        let web= 'https://www.n12.co.il/'
+        let webNow
+        do{
+            await browser.back();
+            await browser.pause(1500);
+            webNow=await browser.getUrl()
+
+        }while(webNow !== web)
+        
         endStep();
-        await browser.pause(3000);
 
     }
 
@@ -206,4 +229,4 @@ class isrealHyomPage {
 
 
 }
-module.exports = new isrealHyomPage();
+module.exports = new twelvePage();

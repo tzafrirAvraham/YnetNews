@@ -19,13 +19,17 @@ exports.config = {
     suites: {
         allTests: [
             './test/specs/ynetTest.e2e.js',
-            './test/specs/isrealHyom.e2e.js'
+            './test/specs/isrealHyom.e2e.js',
+            './test/specs/twelveTest.e2e.js'
         ],
     },
 
 
 
-    maxInstances: 2,
+    maxInstances: 3,
+
+    // keepBrowserAlive: true,
+
 
 
 
@@ -33,7 +37,7 @@ exports.config = {
         browserName: 'chrome',
         'goog:chromeOptions': {
             args: [
-               //'--headless',
+              '--headless',
               '--incognito',
               '--disable-blink-features=AutomationControlled',
               '--disable-popup-blocking',

@@ -98,7 +98,7 @@ class ynetNewsPage {
         let year = date.getFullYear();
         const datec=day+"/"+month+"/"+year;
        
-        return await datec;
+        return  datec;
 
     }
     
@@ -126,9 +126,9 @@ class ynetNewsPage {
 
     async connectDB(){
         startStep('connectDB');       
-         mongoose.connect('mongodb+srv://yaal-2122:wsmJQ3ggbFxFtHX@cluster0.qnlfmxm.mongodb.net/GQ-Dashboard?')
+         //mongoose.connect('mongodb+srv://yaal-2122:wsmJQ3ggbFxFtHX@cluster0.qnlfmxm.mongodb.net/GQ-Dashboard?')
         //mongoose.connect('mongodb+srv://shilo:a72Y53vXKjhNDAJn@chatnews.uaripa9.mongodb.net/GQ-Dashboard')
-        //mongoose.connect('mongodb+srv://tzafriravram:jNK2c1HoPxz8EkAn@tzafrirdata.4gcmmsq.mongodb.net/?retryWrites=true&w=majority&appName=tzafrirData')
+        mongoose.connect('mongodb+srv://tzafriravram:jNK2c1HoPxz8EkAn@tzafrirdata.4gcmmsq.mongodb.net/?retryWrites=true&w=majority&appName=tzafrirData')
         .then(() => console.log('Connected!'));   
 
        
@@ -228,12 +228,12 @@ class ynetNewsPage {
          {img1='https://www.brandwiz.co.il/userfiles/image/israel_album_open/brand_israelayom_a_01.jpg'}
         let summery1=await this.getSummery();
         let author1='ynet_news';
-        console.log("title is: " +await this.getTitle());
-        console.log("img link: " +await this.getImg());
-        console.log("sub title: " +await this.getSubTitle());
-        console.log("time: " +await this.getTime());
-        console.log("date: " +await this.getDate());
-        console.log("summery : " +await this.getSummery());
+        // console.log("title is: " +await this.getTitle());
+        // console.log("img link: " +await this.getImg());
+        // console.log("sub title: " +await this.getSubTitle());
+        // console.log("time: " +await this.getTime());
+        // console.log("date: " +await this.getDate());
+        // console.log("summery : " +await this.getSummery());
         console.log("-----------------------------------------------------------------------------------------------------------------------------------------------");
         console.log("num "+num);
         arr1=[{title:title1, subTitle:subTitle1,time:time1, date:date1, image:img1, summary:summery1,author:author1,count: num}];
