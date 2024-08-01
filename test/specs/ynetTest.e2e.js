@@ -5,7 +5,7 @@ const Ynet= require('../../model/ynet.js');
 
 
 
-describe('Articles Data', () => {
+describe('Ynet', () => {
     let articleArray;
     let num=1;
     it('Connect DB ', async()=>{

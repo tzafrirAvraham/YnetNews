@@ -1,1 +1,1 @@
-[{"uid":"bcaca8bfd7a5a6de","name":"10 articles data ","time":{"start":1722514099429,"stop":1722514600464,"duration":501035},"status":"broken","severity":"normal"}]
+[{"uid":"64dabed20aa09efd","name":"Connect DB ","time":{"start":1722520102204,"stop":1722520136894,"duration":34690},"status":"passed","severity":"normal"},{"uid":"4fb51b4bf37a35ae","name":"N12 10 articles data ","time":{"start":1722520136903,"stop":1722520282282,"duration":145379},"status":"broken","severity":"normal"}]

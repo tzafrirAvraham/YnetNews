@@ -37,7 +37,7 @@ exports.config = {
         browserName: 'chrome',
         'goog:chromeOptions': {
             args: [
-              '--headless',
+              //'--headless',
               '--incognito',
               '--disable-blink-features=AutomationControlled',
               '--disable-popup-blocking',

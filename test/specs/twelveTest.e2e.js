@@ -4,7 +4,7 @@ const {startStep, endStep, addStep} = require('@wdio/allure-reporter').default;
 
 
 
-describe('DataBase Connection', () => {
+describe('N12 News', () => {
     let articleArray;
     let num=1;
     it('Connect DB ', async()=>{
