@@ -43,7 +43,13 @@ exports.config = {
               '--disable-popup-blocking',
               '--disable-infobars',
               '--disable-notifications',
-              '--disable-third-party-cookies'
+              '--disable-third-party-cookies',
+                '--disable-gpu',
+                '--no-sandbox',
+                '--disable-dev-shm-usage',
+                '--window-size=1920,1080',
+                '--disable-browser-side-navigation',
+                '--disable-features=VizDisplayCompositor'
 
 
             ],
