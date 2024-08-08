@@ -1,1 +1,1 @@
-[{"uid":"d17ecb4179ded0f4","name":"Connect DB ","time":{"start":1722713104682,"stop":1722713111580,"duration":6898},"status":"passed","severity":"normal"}]
+[{"uid":"fe4d14f86bd91b0","name":"Connect DB ","time":{"start":1723028163681,"stop":1723028175600,"duration":11919},"status":"passed","severity":"normal"},{"uid":"bbae3e966640ba27","name":"10 articles data isreal hayom","time":{"start":1723028175602,"stop":1723028911520,"duration":735918},"status":"passed","severity":"normal"}]

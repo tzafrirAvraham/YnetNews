@@ -17,7 +17,7 @@ class isrealHyomPage {
     get titleText(){ return $("//*[@class='single-post-title']/*[@class='titleText']");}
     get subTitleText(){ return $("//*[@class='single-post-subtitle']");}
     get summaryText(){ return $$("//*[@id='text-content']/p[not(div)]");}
-    get imageText(){ return $$("//*[contains(@class, 'single-post-media_image__img')][@src]");}
+    get imageText(){ return $("(//*[contains(@class, 'single-post-media_image__img')][@src])[1]");}
     get dateTimeText(){ return $("span[class='single-post-meta-dates']");}
     // get blog(){return $('.blogs-auto-feed-header a');}
     get authorsText(){return $$("//article[contains(@class, 'post post-')]/*[@class='post-content ']//*[@class='post-meta']/span")}
@@ -91,7 +91,7 @@ class isrealHyomPage {
         startStep('print img text');       
         let list= await this.imageText;
         endStep();
-        return await BasePage.getAtribute(list[0],'src');
+        return await BasePage.getAtribute(list,'src');
         
 
     }
@@ -161,10 +161,12 @@ class isrealHyomPage {
         let subTitle1=await this.getSubTitle();
         let time1= time
         let date1=await this.getDate();
-        let img1=await this.getImg();
+        let img=await this.getImg();
+        let img1;
         console.log("img link: " +await this.getImg());
-         if (img1?.length<1)         
-         {img1='https://assets-global.website-files.com/63d8fee58e897e0396075286/64ca2a626e35720cb0af8c87_1%20YNET%20%D7%99%D7%93%D7%99%D7%A2%D7%95%D7%AA-04.png'}
+         if (img?.length<1)         
+         {img1='https://www.brandwiz.co.il/userfiles/image/israel_album_open/brand_israelayom_a_01.jpg'}
+         else{img1='https://www.israelhayom.co.il/'+img}
         let summery1=await this.getSummery();
         let author1=author;
         // console.log("title is: " +await this.getTitle());
