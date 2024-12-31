@@ -70,7 +70,7 @@ exports.config = {
     baseUrl: 'https://www.ynet.co.il/home/0,7340,L-8,00.html',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 60000,
+    waitforTimeout: 2*60*1000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response

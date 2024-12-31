@@ -3,6 +3,7 @@ const { default: mongoose } = require('mongoose');
 const BasePage = require('../pageobjects/base.page');
 const {startStep, endStep, addStep} = require('@wdio/allure-reporter').default;
 const Ynet= require('../../model/ynet.js');
+const mongoDB= require('../../mongoConnction/mongoDB.js')
 
 
 
@@ -24,7 +25,7 @@ class ynetNewsPage {
     
 /////////////////////////////articles/////////////////////////////////////////////////
 
-    get mainArticleButton(){ return $("//*[@class='TopStory1280Componenta basic AuthorOnMode']");}
+    get mainArticleButton(){ return $("//*[contains(@class, 'TopStory1280Componenta')]");}
     get subArticlesButton(){ return $$("//*[@class='YnetMultiStripComponenta oneRow']/div/div[1]/div[1]/div[1]");}
     get politicalAndSecurityButton(){return $$("(//*[@class='MultiArticleAutoComponenta1280'])[1]/*[@class='slotsContent']/div/div[@class='slotView']/div[1]/div[1]/a");}
     get isrealNewsButton(){ return $$("(//*[@class='MultiArticleAutoComponenta1280'])[2]/*[@class='slotsContent']/div/div[@class='slotView']/div[1]/div[1]/a");}
@@ -126,22 +127,15 @@ class ynetNewsPage {
 
     async connectDB(){
         startStep('connectDB');       
-         mongoose.connect('mongodb+srv://yaal-2122:wsmJQ3ggbFxFtHX@cluster0.qnlfmxm.mongodb.net/GQ-Dashboard?')
+        // mongoose.connect('mongodb+srv://yaal-2122:wsmJQ3ggbFxFtHX@cluster0.qnlfmxm.mongodb.net/GQ-Dashboard?')
         //mongoose.connect('mongodb+srv://shilo:a72Y53vXKjhNDAJn@chatnews.uaripa9.mongodb.net/GQ-Dashboard')
-        //mongoose.connect('mongodb+srv://tzafriravram:jNK2c1HoPxz8EkAn@tzafrirdata.4gcmmsq.mongodb.net/?retryWrites=true&w=majority&appName=tzafrirData')
+        mongoose.connect('mongodb+srv://tzafriravram:jNK2c1HoPxz8EkAn@tzafrirdata.4gcmmsq.mongodb.net/?retryWrites=true&w=majority&appName=tzafrirData')
         .then(() => console.log('Connected!'));   
 
        
     endStep(); 
 }
-//    async updateDB()
-//    { this.connectDB();
-//        const filter = { count: "11" };
-//         const update = { title: "Blabla" };        
-//         let doc1=await Ynet.findOne(filter, { timeout: 30000 });
-//         console.log("updateDB status - "+doc1);
-// //        let doc = await Ynet.findOneAndUpdate(filter, update);
-//    }
+
 
 
     //----------------------------------------------------------
@@ -238,24 +232,8 @@ class ynetNewsPage {
         console.log("num "+num);
         arr1=[{title:title1, subTitle:subTitle1,time:time1, date:date1, image:img1, summary:summery1,author:author1,count: num}];
          
-        const filter = { count: num.toString() };
-        let doc1=await Ynet.findOne(filter);
-        console.log("filter - "+doc1);;
-        if (doc1== null)
-        {
-            console.log("filter - "+doc1);
-        const ynet= await Ynet.create(arr1[0]);
-        console.log("Insert "+num+" verify")
-        }
-        else{
-            console.log("filter - "+doc1);
-            const update = {title:title1, subTitle:subTitle1,time:time1, date:date1, image:img1, summary:summery1,author:author1,count: num}; 
-            let doc = await Ynet.findOneAndUpdate(filter, update);
-            console.log("Update "+num+" verify")
-        }
-        
-        
-        endStep();
+        mongoDB.CreateOrUpdate(num,Ynet,arr1)
+    
         startStep("back to home page");
         await browser.back();
         endStep();
