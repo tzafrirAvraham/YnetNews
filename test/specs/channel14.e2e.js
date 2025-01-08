@@ -5,7 +5,7 @@ const path= require('path')
 
 
 
-describe('sportOne', () => {
+describe('channel14', () => {
     let articleArray;
     let num=1;
     before('Connect DB ', async()=>{
