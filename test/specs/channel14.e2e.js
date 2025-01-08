@@ -1,8 +1,7 @@
-const sportOnePage= require('../pageobjects/sportOne.page');
+const channel14Page= require('../pageobjects/channel14.page');
 const {startStep, endStep, addStep} = require('@wdio/allure-reporter').default;
-const mongoose = require("mongoose");
-const Ynet= require('../../model/ynet.js');
 const mongoDB= require('../../mongoConnction/mongoDB')
+const path= require('path')
 
 
 
@@ -13,8 +12,8 @@ describe('sportOne', () => {
         startStep('connction to mongoDB')
         await mongoDB.connectDB();
         endStep();
-        startStep('open one website');
-        await browser.url('https://www.one.co.il/');
+        startStep('open now14 website');
+        await browser.url('https://www.now14.co.il/');
         endStep();
     })
 
@@ -23,7 +22,7 @@ describe('sportOne', () => {
 
     it('Main Article Data', async()=>{
 
-        await sportOnePage.dataFromMainArticle(articleArray,num,);
+        await channel14Page.dataFromMainArticle(articleArray,num,);
         //num++;
     })
 
@@ -31,24 +30,17 @@ describe('sportOne', () => {
 
     it('three Sub-Main Articles Data ', async()=>{
         num=2
-        await sportOnePage.dataFromThreeSubMainArticles(articleArray,num);
+        await channel14Page.dataFromFourSubMainArticles(articleArray,num);
         
     })
 
     it('isreali sport News', async()=>{
         articleArray=[];     
         num=5;   
-        await sportOnePage.dataFromThreeIsrealiFootballArticles(articleArray,num);        
+        await channel14Page.dataFromFiveGeneralArticles(articleArray,num);        
         
     })
 
-    it('global sport News', async()=>{
-        articleArray=[];
-        num= 8;
-
-        await sportOnePage.dataFromThreeGlobalFootballArticles(articleArray,num);
-      
-    })
 
 
    

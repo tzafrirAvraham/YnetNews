@@ -1,6 +1,10 @@
 const allureReport = require("allure-commandline");
 const allure = require('@wdio/allure-reporter').default;
 const fs = require('fs');
+const path = require('path');
+const pathFile= path.join(__dirname+ '/adBlocker/extension_1_50_0_0.crx')
+
+
 
 exports.config = {
 
@@ -9,7 +13,7 @@ exports.config = {
 
     specs: [
         
-       './test/specs/**/sportOne.e2e.js'
+       './test/specs/**/channel14.e2e.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -20,7 +24,9 @@ exports.config = {
         allTests: [
             './test/specs/ynetTest.e2e.js',
             './test/specs/isrealHyom.e2e.js',
-            './test/specs/twelveTest.e2e.js'
+            './test/specs/twelveTest.e2e.js',
+            './test/specs/sportOne.e2e.js',
+            './test/specs/channel14.e2e.js'
         ],
     },
 
@@ -54,6 +60,7 @@ exports.config = {
 
 
             ],
+            //extensions: [ path.resolve(__dirname+ '/adBlocker/extension_1_50_0_0.crx'),],
             excludeSwitches: ['enable-automation'],
         }
     }],

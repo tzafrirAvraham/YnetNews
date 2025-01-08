@@ -17,18 +17,18 @@ class sportOne {
 
     get titleText(){ return $("//h1[contains(@class, 'text-NowBlue')]");}
     get subTitleText(){ return $("//h3[contains(@class, 'text')]");}
-    get date(){return $("//*[@class='article-credit']/time")} //date inside the attribure title
+    //get date(){return $("//*[@class='article-credit']/time")} //date inside the attribure title
     get summaryText(){ return $$("//div[contains(@class, 'ArticleContent')]/p");}
-    get imageText(){ return $("relative h-full");}
+    get imageText(){ return $("//div[contains(@class,'relative h-full w-full')]/img");}
     //get dateTimeText(){ return $("span[class='single-post-meta-dates']");}
     get time(){return $("(//p[contains(@class, 'leading-tight')])[2]");}
-    get authorsText(){return $$("(//p[contains(@class, 'leading-tight')])[1]")}
+    get authorsText(){return $("(//p[contains(@class, 'leading-tight')])[1]")}
     
 /////////////////////////////articles/////////////////////////////////////////////////
 
     get MainArticlesButton(){ return $("(//article/a)[1]");}
     get fourSubMainArticles(){ return $$("//a[@target]/article/div/div[1]")}
-    get fiveGeneralArticles(){ return $$("(//a[@target]/div/div/div/img[@data-nimg='fill'])[position() <= 5]")}
+    get fiveGeneralArticles(){ return $$("//section[2]//img[@data-nimg='fill']")}
   
    
 
@@ -180,7 +180,7 @@ class sportOne {
         let date1=await this.getDate();
         let img1=await this.getImg();
         console.log("img link: " +img1);
-         if (img1?.length<1)         
+         if (img1?.length < 1 || img1 == null)        
          {img1='https://gurutv.online/wp-content/uploads/xch14new.jpg.pagespeed.ic.lWe3ApJG9-.jpg'}
         let summery1=await this.getSummery();
         let author1= await this.getAuthor();
