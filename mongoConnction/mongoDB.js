@@ -1,10 +1,13 @@
+const {startStep, endStep, addStep} = require('@wdio/allure-reporter').default;
+const { default: mongoose } = require('mongoose');
+
 
 class mongoDB{
                  
     async connectDB() {
         startStep('connectDB');       
         // mongoose.connect('mongodb+srv://yaal-2122:wsmJQ3ggbFxFtHX@cluster0.qnlfmxm.mongodb.net/GQ-Dashboard?')
-        mongoose.connect('mongodb+srv://tzafriravram:jNK2c1HoPxz8EkAn@tzafrirdata.4gcmmsq.mongodb.net/?retryWrites=true&w=majority&appName=tzafrirData')
+        await mongoose.connect('mongodb+srv://tzafriravram:jNK2c1HoPxz8EkAn@tzafrirdata.4gcmmsq.mongodb.net/?retryWrites=true&w=majority&appName=tzafrirData')
         .then(() => console.log('Connected!'));   
         endStep(); 
     }
@@ -15,20 +18,21 @@ class mongoDB{
         //console.log("filter - "+doc1);;
         //create section
         if (doc1== null){
-        console.log("there is no artice found - "+doc1);
-        await modelName.create(arr[0]);
-        console.log("Insert "+num+" verify")
+            startStep('go to create section')
+            console.log("there is no artice found - "+doc1);
+            await modelName.create(arr[0]);
+            console.log("Insert "+num+" verify")
+            endStep();
         }
         // update section
         else{
+            startStep('go to update section')
             //console.log("filter - "+doc1);
             await modelName.findOneAndUpdate(filter, arr[0]);
             console.log("Update "+num+" verify")
+            endStep();
         }
         
-        
-        endStep();
-
     }
 }
 

@@ -9,7 +9,7 @@ exports.config = {
 
     specs: [
         
-       './test/specs/**/ynetTest.e2e.js'
+       './test/specs/**/sportOne.e2e.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -49,7 +49,8 @@ exports.config = {
                 '--disable-dev-shm-usage',
                 '--window-size=1920,1080',
                 '--disable-browser-side-navigation',
-                '--disable-features=VizDisplayCompositor'
+                '--disable-features=VizDisplayCompositor',
+                '--enable-unsafe-swiftshader'
 
 
             ],
