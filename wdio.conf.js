@@ -1,6 +1,6 @@
 const allureReport = require("allure-commandline");
 const allure = require('@wdio/allure-reporter').default;
-import fs from "fs";
+const fs = require('fs');
 
 exports.config = {
 
