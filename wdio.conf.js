@@ -13,7 +13,7 @@ exports.config = {
 
     specs: [
         
-       './test/specs/**/channel14.e2e.js'
+       './test/specs/**/isrealHyom.e2e.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -32,7 +32,7 @@ exports.config = {
 
 
 
-    maxInstances: 3,
+    maxInstances: 2,
 
     // keepBrowserAlive: true,
 

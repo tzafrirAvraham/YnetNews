@@ -1,25 +1,32 @@
 const isrealHyomPage= require('../pageobjects/israelToday.page');
 const {startStep, endStep, addStep} = require('@wdio/allure-reporter').default;
-const mongoose = require("mongoose");
-const Ynet= require('../../model/ynet.js');
+const mongoDB= require('../../mongoConnction/mongoDB')
+
+
+
 
 
 
 describe('Isreal Hayom', () => {
     let articleArray;
     let num=1;
-    it('Connect DB ', async()=>{
+    before('Connect DB ', async()=>{
     await browser.url('https://www.israelhayom.co.il/')
-    await isrealHyomPage.connectDB();
+    startStep('connction to mongoDB')
+    await mongoDB.connectDB();
+    endStep();
     })
 
 
 
 
-    it('10 articles data isreal hayom', async()=>{
-        startStep('click on article '+num);
+    it('main article data', async()=>{
+        await isrealHyomPage.dataFromMainArticle(articleArray,num);
+    });
+
+    it('9articles data isreal hayom', async()=>{
+        num=2
         await isrealHyomPage.dataFromTenArticles(articleArray,num);
-        endStep();
     })
 
 })

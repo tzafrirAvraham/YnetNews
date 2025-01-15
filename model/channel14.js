@@ -21,6 +21,6 @@ const blogSchema = new mongoose.Schema(
 );
 
 
-const channnel14 = mongoose.model('channnel14', blogSchema);
+const channnel14 = mongoose.model('channel_14', blogSchema);
 //export default Ynet;
 module.exports = channnel14

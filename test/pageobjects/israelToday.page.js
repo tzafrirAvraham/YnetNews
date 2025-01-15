@@ -3,6 +3,8 @@ const { default: mongoose } = require('mongoose');
 const BasePage = require('../pageobjects/base.page');
 const {startStep, endStep, addStep} = require('@wdio/allure-reporter').default;
 const Isreal= require('../../model/isrealHyom.js');
+const mongoDB= require('../../mongoConnction/mongoDB.js')
+
 
 
 
@@ -16,16 +18,19 @@ class isrealHyomPage {
 
     get titleText(){ return $("//*[@class='single-post-title']/*[@class='titleText']");}
     get subTitleText(){ return $("//*[@class='single-post-subtitle']");}
-    get summaryText(){ return $$("//*[@id='text-content']/p[not(div)]");}
+    get summaryText(){ return $$("//*[@id='text-content']/p");}
     get imageText(){ return $("(//*[contains(@class, 'single-post-media_image__img')][@src])[1]");}
     get dateTimeText(){ return $("span[class='single-post-meta-dates']");}
     // get blog(){return $('.blogs-auto-feed-header a');}
-    get authorsText(){return $$("//article[contains(@class, 'post post-')]/*[@class='post-content ']//*[@class='post-meta']/span")}
+    get authorsText(){return $$("(//article[contains(@class, 'post post-')]/*[@class='post-content ']//*[@class='post-meta']/span)[position() <= 10]")}
     
+    get MainArticleAuthorsText(){return $("(//article[contains(@class, 'post post-')]/*[@class='post-content ']//*[@class='post-meta']/span)[1]")}
+    get MainArticleTime(){return $("(//article[contains(@class, 'post post-')]/*[@class='post-content ']//*[@class='post-meta']/time)[1]")}
 /////////////////////////////articles/////////////////////////////////////////////////
 
-    get articlesButton(){ return $$("//article[contains(@class, 'post post-')]/*[@class='post-media']");}
-    get time(){return $$("//article[contains(@class, 'post post-')]/*[@class='post-content ']//*[@class='post-meta']/time")}
+    get articlesButton(){ return $$("(//article[contains(@class, 'post post-')]/*[@class='post-media'])[position() <= 10]");}
+    get mainArticle(){ return $("//article[contains(@class, 'posts-octet__post-1')]//h3")}
+    get time(){return $$("(//article[contains(@class, 'post post-')]/*[@class='post-content ']//*[@class='post-meta']/time)[position() <= 10]")}
 
 
    
@@ -81,7 +86,7 @@ class isrealHyomPage {
         let year = date.getFullYear();
         const datec=day+"/"+month+"/"+year;
        
-        return await datec;
+        return  datec;
 
     }
     
@@ -97,6 +102,15 @@ class isrealHyomPage {
     }
 
     async getSummery(){
+        // startStep('print summery text');       
+        // // let list= await this.summaryText;
+        // // let summary= "";
+        // // for( let i=0; i< list.length; i++ ){
+        // //    summary+= await BasePage.getText(list[i]);
+        // // }
+        // endStep();
+        // // return summary;
+        // return await BasePage.getText(this.summaryText);
         startStep('print summery text');       
         let list= await this.summaryText;
         let summary= "";
@@ -131,23 +145,32 @@ class isrealHyomPage {
     //Actions 
     //----------------------------------------------------------
  
+    async dataFromMainArticle(arr1,num){
 
-    
+        let time= await (await this.MainArticleTime).getText();;
+        let author= await (await this.MainArticleAuthorsText).getText();;
+        
+        startStep('click on main article');
+        await this.mainArticle.click();
+        endStep();
+
+        await this.printData(arr1,num, time,author);
+    }
+
     async dataFromTenArticles(arr1,num){
         let list= await this.articlesButton;
         let timeList = await this.time;
         let authorList= await this.authorsText;
 
-        for(let i=0; i< 9; i++){
-            startStep(" clicking on article number "+ (i+1));
+        for(let i=1; i<= 9; i++){
+            startStep(" clicking on article number "+ (num));
             console.log("num "+num);
             let time= await timeList[i].getText();
             let author= await authorList[i].getText(); 
-            await BasePage.clickButton(list[i+1]);
+            await BasePage.clickButton(list[i]);
             await this.printData(arr1,num,time,author);
-            num++;
             endStep();
-            
+            num++;  
         }
     }
 
@@ -169,34 +192,16 @@ class isrealHyomPage {
          else{img1='https://www.israelhayom.co.il/'+img}
         let summery1=await this.getSummery();
         let author1=author;
-        // console.log("title is: " +await this.getTitle());
-        // console.log("img link: " +await this.getImg());
-        // console.log("sub title: " +await this.getSubTitle());
-        // console.log("time: " + time1)
-        // console.log("date: " +await this.getDate());
-        // console.log("summery : " +await this.getSummery());
+    
         console.log("-----------------------------------------------------------------------------------------------------------------------------------------------");
         console.log("num "+num);
         arr1=[{title:title1, subTitle:subTitle1,time:time1, date:date1, image:img1, summary:summery1,author:author1,count: num}];
-         
-        const filter = { count: num.toString() };
-        let doc1=await Isreal.findOne(filter);
-        console.log("filter - "+doc1);;
-        if (doc1== null)
-        {
-            console.log("filter - "+doc1);
-        const ynet= await Isreal.create(arr1[0]);
-        console.log("Insert "+num+" verify")
-        }
-        else{
-            console.log("filter - "+doc1);
-            const update = {title:title1, subTitle:subTitle1,time:time1, date:date1, image:img1, summary:summery1,author:author1,count: num}; 
-            let doc = await Isreal.findOneAndUpdate(filter, update);
-            console.log("Update "+num+" verify")
-        }
-        
-        
         endStep();
+         
+        startStep('push the data to mongoos database')
+        await mongoDB.CreateOrUpdate(num,Isreal,arr1)
+        endStep();
+
         startStep("back to home page");
         await browser.back();
         endStep();

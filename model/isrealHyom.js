@@ -23,6 +23,6 @@ const blogSchema = new mongoose.Schema(
 );
 
 
-const Isreal = mongoose.model('israel_hayom_news', blogSchema);
+const Isreal = mongoose.model('israel_hayom', blogSchema);
 //export default Ynet;
 module.exports = Isreal
