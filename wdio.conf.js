@@ -22,12 +22,12 @@ exports.config = {
 
     suites: {
         ynetNow14AndOne: [
-            './test/specs/wallaSport.e2e.js',
+            './test/specs/wallaSportsp.e2e.js',
             './test/specs/sportOne.e2e.js',
             './test/specs/channel14.e2e.js'
         ],
 
-        isrealHayomAndWalla: [
+        israelHayomAndWalla: [
             './test/specs/isrealHyom.e2e.js',
             './test/specs/twelveTest.e2e.js',
             './test/specs/ynetTest.e2e.js'
