@@ -13,7 +13,7 @@ exports.config = {
 
     specs: [
         
-       './test/specs/**/isrealHyom.e2e.js'
+       './test/specs/**/wallaSport.e2e.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -21,12 +21,16 @@ exports.config = {
     ],
 
     suites: {
-        allTests: [
-            './test/specs/ynetTest.e2e.js',
-            './test/specs/isrealHyom.e2e.js',
-            './test/specs/twelveTest.e2e.js',
+        ynetNow14AndOne: [
+            './test/specs/wallaSport.e2e.js',
             './test/specs/sportOne.e2e.js',
             './test/specs/channel14.e2e.js'
+        ],
+
+        isrealHayomAndWalla: [
+            './test/specs/isrealHyom.e2e.js',
+            './test/specs/twelveTest.e2e.js',
+            './test/specs/ynetTest.e2e.js'
         ],
     },
 
