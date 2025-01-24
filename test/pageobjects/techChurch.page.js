@@ -11,18 +11,17 @@ class techChurch{
 
 get titleText(){ return $("//div[@class='article-hero__middle']");}
 get subTitleText(){ return $("//p[@id='speakable-summary']");}
-get date(){return $("//div[@class='wp-block-post-date']");} //date inside the attribure title
-get summaryText(){ return $$("//div[contains(@class, 'entry-content wp-block-post-content is-layout-constrained')]/p[@class='wp-block-paragraph']|//h3[@class='wp-block-heading']/strong");}
-get imageText(){ return $("");}
-//get dateTimeText(){ return $("span[class='single-post-meta-dates']");}
-get time(){return $("");}
-//get authorsText(){return $$("//article[contains(@class, 'post post-')]/*[@class='post-content ']//*[@class='post-meta']/span")}
+get summaryText(){ return $$("//div[contains(@class, 'entry-content')]/p|//h3/strong|//h1[contains(@id, 'h-lg-s')]");}
+get imageText(){ return $("//figure[@class='wp-block-post-featured-image']/img");}
+get dateTimeText(){ return $("//div[@class='wp-block-post-date']/time");}
+//get time(){return $("");}
+get authorsText(){return $$("//div[@class='wp-block-tc23-author-card-name']/a")}
 
 /////////////////////////////articles/////////////////////////////////////////////////
 
 get MainArticleButton(){ return $("//*/main//div[@class='hero-package-2__featured']");}
 get twoMainArticlesButton(){ return $$(".hero-package-2__upnext .wp-block-techcrunch-card");}
-get latestNewsArticlesButton(){ return $$("li[class*='wp-block-post post']");}
+get restOfArticlesButton(){ return $$("//div[contains(@class, 'wp-block-group heading')]/following-sibling::div/ul/li");}
 
 
 } module.exports= new techChurch();
