@@ -24,4 +24,49 @@ get twoMainArticlesButton(){ return $$(".hero-package-2__upnext .wp-block-techcr
 get restOfArticlesButton(){ return $$("//div[contains(@class, 'wp-block-group heading')]/following-sibling::div/ul/li");}
 
 
+//----------------------------------------------------------
+   //Click
+   //----------------------------------------------------------
+
+
+
+
+    //----------------------------------------------------------
+    //Actions (get)
+    //----------------------------------------------------------
+
+    async getTitle(){
+        startStep('print title text');       
+        endStep();
+
+        return await BasePage.getText(this.titleText);
+    }
+
+    async getSubTitle(){
+            startStep('print sub title text');       
+            endStep();
+    
+            return await BasePage.getText(this.subTitleText);
+        }
+
+        async getTime(){
+                let temp;
+                let dateAndTime
+                let time;
+                startStep('print Time text');       
+                endStep();
+                let status=await this.dateTimeText.isExisting();
+                if (status){
+                  dateAndTime=(await this.dateTimeText).split(" ")
+                 // console.log('Shilo dateTime '+dateAndTime)
+                  time = await BasePage.getText(this.time[0]);
+                  return time;
+                }
+               else 
+                {console.log('Shilo dateTime '+status)
+                    temp= '00:00'}
+                return temp;
+            }
+
+
 } module.exports= new techChurch();
