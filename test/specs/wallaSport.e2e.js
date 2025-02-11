@@ -5,7 +5,7 @@ const mongoDB= require('../../mongoConnction/mongoDB.js')
 
 
 
-describe('sportOne', () => {
+describe('sportWalla', () => {
     let articleArray;
     let num=1;
     before('Connect DB ', async()=>{
