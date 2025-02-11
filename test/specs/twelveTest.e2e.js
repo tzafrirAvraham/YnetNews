@@ -20,9 +20,9 @@ describe('N12 News', () => {
 
 
     it('N12 10 articles data ', async()=>{
-        startStep('click on article '+num);
+        // startStep('click on article '+num);
         await twelveNewsPage.dataFromTenArticlesN12(articleArray,num);
-        endStep();
+        // endStep();
     })
 
 })
