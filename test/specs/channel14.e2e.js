@@ -36,7 +36,7 @@ describe('channel14', () => {
 
     it('isreali sport News', async()=>{
         articleArray=[];     
-        num=5;   
+        num=6;   
         await channel14Page.dataFromFiveGeneralArticles(articleArray,num);        
         
     })

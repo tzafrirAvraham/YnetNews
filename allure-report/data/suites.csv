@@ -1,2 +1,7 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed Jan 08 15:05:26 IST 2025","Wed Jan 08 15:05:45 IST 2025","19704","","sportOne","","","","Main Article Data",""
+"passed","Tue Feb 11 14:43:11 IST 2025","Tue Feb 11 14:44:41 IST 2025","90573","","Ynet","","","","Political News Data ",""
+"passed","Tue Feb 11 14:40:34 IST 2025","Tue Feb 11 14:40:35 IST 2025","1199","","Ynet","","","","Connect DB ",""
+"passed","Tue Feb 11 14:41:09 IST 2025","Tue Feb 11 14:43:11 IST 2025","121725","","Ynet","","","","Four Sub-Main Articles Data ",""
+"passed","Tue Feb 11 14:40:35 IST 2025","Tue Feb 11 14:41:09 IST 2025","34011","","Ynet","","","","Main Article Data",""
+"passed","Tue Feb 11 14:44:41 IST 2025","Tue Feb 11 14:45:19 IST 2025","37277","","Ynet","","","","Isreal News Data ",""
+"passed","Tue Feb 11 14:45:19 IST 2025","Tue Feb 11 14:45:51 IST 2025","32810","","Ynet","","","","World News Data ",""

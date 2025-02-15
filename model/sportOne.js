@@ -21,6 +21,6 @@ const blogSchema = new mongoose.Schema(
 );
 
 
-const SportOne = mongoose.model('sportOne', blogSchema);
+const SportOne = mongoose.model('sport_one', blogSchema);
 //export default Ynet;
 module.exports = SportOne

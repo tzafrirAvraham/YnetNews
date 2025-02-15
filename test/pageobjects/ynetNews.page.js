@@ -154,8 +154,9 @@ class ynetNewsPage {
            
             await BasePage.clickButton(list[i]);
             await this.printData(arr1,num);
-            num++;
             endStep();
+            num++;
+          
             
         }
 
@@ -170,8 +171,9 @@ class ynetNewsPage {
            
             await BasePage.clickButton(list[i]);
             await this.printData(arr1,num);
-            num++;
             endStep();
+            num++;
+            
             
         }
     }
@@ -186,8 +188,9 @@ class ynetNewsPage {
             
             await BasePage.clickButton(list[i]);
             await this.printData(arr1,num);
-            num++;
             endStep();
+            num++;
+            
            
         }
         
@@ -203,8 +206,9 @@ class ynetNewsPage {
             
             await BasePage.clickButton(list[i]);
             await this.printData(arr1,num);
-            num++;
             endStep();
+            num++;
+            
         }
         
     }
@@ -222,17 +226,15 @@ class ynetNewsPage {
          {img1='https://assets-global.website-files.com/63d8fee58e897e0396075286/64ca2a626e35720cb0af8c87_1%20YNET%20%D7%99%D7%93%D7%99%D7%A2%D7%95%D7%AA-04.png'}
         let summery1=await this.getSummery();
         let author1='ynet_news';
-        // console.log("title is: " +await this.getTitle());
-        // console.log("img link: " +await this.getImg());
-        // console.log("sub title: " +await this.getSubTitle());
-        // console.log("time: " +await this.getTime());
-        // console.log("date: " +await this.getDate());
-        // console.log("summery : " +await this.getSummery());
+    
         console.log("-----------------------------------------------------------------------------------------------------------------------------------------------");
         console.log("num "+num);
         arr1=[{title:title1, subTitle:subTitle1,time:time1, date:date1, image:img1, summary:summery1,author:author1,count: num}];
+        endStep();
          
+        startStep('push the data to mongoos database')
         mongoDB.CreateOrUpdate(num,Ynet,arr1)
+        endStep();
     
         startStep("back to home page");
         await browser.back();

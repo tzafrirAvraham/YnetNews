@@ -2,6 +2,8 @@ const ynetPage= require('../pageobjects/ynetNews.page');
 const {startStep, endStep, addStep} = require('@wdio/allure-reporter').default;
 const mongoose = require("mongoose");
 const Ynet= require('../../model/ynet.js');
+const mongoDB= require('../../mongoConnction/mongoDB.js')
+
 
 
 
@@ -9,7 +11,8 @@ describe('Ynet', () => {
     let articleArray;
     let num=1;
     it('Connect DB ', async()=>{
-        await ynetPage.connectDB();
+        await mongoDB.connectDB();
+
     })
 
 

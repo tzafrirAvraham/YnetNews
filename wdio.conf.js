@@ -2,7 +2,7 @@ const allureReport = require("allure-commandline");
 const allure = require('@wdio/allure-reporter').default;
 const fs = require('fs');
 const path = require('path');
-const pathFile= path.join(__dirname+ '/adBlocker/extension_1_50_0_0.crx')
+const pathFile= path.join(__dirname, 'chromedriver.exe')
 
 
 
@@ -13,7 +13,7 @@ exports.config = {
 
     specs: [
         
-       './test/specs/**/channel14.e2e.js'
+       './test/specs/**/ynetTest.e2e.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -21,18 +21,22 @@ exports.config = {
     ],
 
     suites: {
-        allTests: [
-            './test/specs/ynetTest.e2e.js',
-            './test/specs/isrealHyom.e2e.js',
-            './test/specs/twelveTest.e2e.js',
+        ynetNow14AndOne: [
+            './test/specs/wallaSport.e2e.js',
             './test/specs/sportOne.e2e.js',
             './test/specs/channel14.e2e.js'
+        ],
+
+        israelHayomAndWalla: [
+            './test/specs/isrealHyom.e2e.js',
+            './test/specs/twelveTest.e2e.js',
+            './test/specs/ynetTest.e2e.js'
         ],
     },
 
 
 
-    maxInstances: 3,
+    maxInstances: 2,
 
     // keepBrowserAlive: true,
 
@@ -68,7 +72,7 @@ exports.config = {
 
 
 
-    logLevel: 'silent',
+    logLevel: 'debug',
  
 
 
@@ -91,7 +95,14 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: [],
+    // services: [],
+    services: [['chromedriver', {
+        // logFileName: 'wdio-chromedriver.log', // default
+        // outputDir: 'driver-logs', // overwrites the config.outputDir
+        // args: ['--silent'],
+        // chromedriverCustomPath: 'C:\Users\Marsel\Good Quality\Customers\Colmobil\SalesforceTests\chromedriver.exe' //dev test
+        chromedriverCustomPath: pathFile
+      }]],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -130,7 +141,7 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 1200000 
+        timeout: 35*60*1000 // 35 minute for all tests
     },
     //
     // =====
