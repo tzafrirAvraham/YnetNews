@@ -233,7 +233,7 @@ class ynetNewsPage {
         endStep();
          
         startStep('push the data to mongoos database')
-        mongoDB.CreateOrUpdate(num,Ynet,arr1)
+        await mongoDB.CreateOrUpdate(num,Ynet,arr1)
         endStep();
     
         startStep("back to home page");
