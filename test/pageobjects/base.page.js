@@ -50,6 +50,16 @@ class BasePage{
         await button.click();
     }
 
+    async clickButtonInRightSide (button){
+        await button.waitForDisplayed({ timeout: 20000 });
+        const location= await button.getLocation();
+        const size = await button.getSize();
+        return await  browser.action('pointer')
+        .move({ x: location.x + size.width / 4, y: location.y + size.height / 2 })
+        .click()
+        .perform();
+    }
+
 
     async getText (value){
         // await value.waitForDisplayed({ timeout: 20000 });
