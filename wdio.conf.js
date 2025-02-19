@@ -66,6 +66,8 @@ exports.config = {
             ],
             //extensions: [ path.resolve(__dirname+ '/adBlocker/extension_1_50_0_0.crx'),],
             excludeSwitches: ['enable-automation'],
+            useAutomationExtension: false,
+
         }
     }],
 
