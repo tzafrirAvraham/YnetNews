@@ -13,7 +13,7 @@ exports.config = {
 
     specs: [
         
-       './test/specs/**/channel14.e2e.js'
+       './test/specs/**/ynetTest.e2e.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -47,7 +47,7 @@ exports.config = {
         browserName: 'chrome',
         'goog:chromeOptions': {
             args: [
-              //'--headless',
+              '--headless',
               '--incognito',
               '--disable-blink-features=AutomationControlled',
               '--disable-popup-blocking',

@@ -52,12 +52,9 @@ class BasePage{
 
     async clickButtonInRightSide (button){
         await button.waitForDisplayed({ timeout: 20000 });
-        const location= await button.getLocation();
-        const size = await button.getSize();
-        return await  browser.action('pointer')
-        .move({ x: location.x + size.width / 4, y: location.y + size.height / 2 })
-        .click()
-        .perform();
+        await browser.execute("arguments[0].scrollIntoView();", await button);
+        await browser.execute("arguments[0].click();", await button);
+
     }
 
 

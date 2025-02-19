@@ -152,7 +152,7 @@ class ynetNewsPage {
             console.log("List "+i+" "+list[i].getText());
             console.log("num "+num);
            
-            await BasePage.clickButtonInRightSide(list[i]);
+            await BasePage.clickButton(list[i]);
             await this.printData(arr1,num);
             endStep();
             num++;
