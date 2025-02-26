@@ -50,7 +50,6 @@ class wallaSport {
     //----------------------------------------------------------
 
     async getTitle(){
-        console.log('strat get titlr data')
         startStep('print title text');       
         endStep();
 
