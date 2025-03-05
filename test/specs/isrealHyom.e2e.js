@@ -15,7 +15,7 @@ describe('Isreal Hayom', () => {
     startStep('connction to mongoDB')
     await mongoDB.connectDB();
     endStep();
-    await browser.setWindowSize(3840, 2160);
+    // await browser.setWindowSize(3840, 2160);
 
     })
 

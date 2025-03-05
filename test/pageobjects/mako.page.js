@@ -1,7 +1,7 @@
 const { default: mongoose } = require('mongoose');
 const BasePage = require('./base.page.js');
 const {startStep, endStep, addStep} = require('@wdio/allure-reporter').default;
-const mako= require('../../model/mako.js');
+const makoModel= require('../../model/mako.js');
 const mongoDB= require('../../mongoConnction/mongoDB.js')
 
 
@@ -226,7 +226,7 @@ get ThreeSubMainArticles(){ return $$("[//section[@class='ComponentLayout_root__
         endStep();
          
         startStep('push the data to mongoos database')
-        await mongoDB.CreateOrUpdate(num,mako,arr1)
+        await mongoDB.CreateOrUpdate(num,makoModel,arr1)
         endStep();
     
         startStep("back to home page");
