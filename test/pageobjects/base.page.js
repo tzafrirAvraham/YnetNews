@@ -50,6 +50,13 @@ class BasePage{
         await button.click();
     }
 
+    async clickButtonInRightSide (button){
+        await button.waitForDisplayed({ timeout: 20000 });
+        await browser.execute("arguments[0].scrollIntoView();", await button);
+        await browser.execute("arguments[0].click();", await button);
+
+    }
+
 
     async getText (value){
         // await value.waitForDisplayed({ timeout: 20000 });

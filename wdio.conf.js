@@ -13,7 +13,7 @@ exports.config = {
 
     specs: [
         
-       './test/specs/**/ynetTest.e2e.js'
+       './test/specs/**/mako.e2e.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -47,7 +47,7 @@ exports.config = {
         browserName: 'chrome',
         'goog:chromeOptions': {
             args: [
-              //'--headless',
+            //   '--headless',
               '--incognito',
               '--disable-blink-features=AutomationControlled',
               '--disable-popup-blocking',
@@ -66,13 +66,15 @@ exports.config = {
             ],
             //extensions: [ path.resolve(__dirname+ '/adBlocker/extension_1_50_0_0.crx'),],
             excludeSwitches: ['enable-automation'],
+            useAutomationExtension: false,
+
         }
     }],
 
 
 
 
-    logLevel: 'debug',
+    logLevel: 'silent',
  
 
 
@@ -100,7 +102,6 @@ exports.config = {
         // logFileName: 'wdio-chromedriver.log', // default
         // outputDir: 'driver-logs', // overwrites the config.outputDir
         // args: ['--silent'],
-        // chromedriverCustomPath: 'C:\Users\Marsel\Good Quality\Customers\Colmobil\SalesforceTests\chromedriver.exe' //dev test
         chromedriverCustomPath: pathFile
       }]],
 
@@ -243,11 +244,16 @@ exports.config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
+    // afterTest: async (test, context, { error, result, duration, passed, retries }) => {
+    //     if(error || result|| duration || passed) {
+    //         await browser.takeScreenshot();
+    //     }
+        
+    // },
     afterTest: async (test, context, { error, result, duration, passed, retries }) => {
-        if(error || result|| duration || passed) {
+        if (error || result || duration || passed || (error && error.message.includes('timeout'))) {
             await browser.takeScreenshot();
         }
-        
     },
 
 

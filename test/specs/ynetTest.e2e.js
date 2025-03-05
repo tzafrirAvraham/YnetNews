@@ -10,8 +10,11 @@ const mongoDB= require('../../mongoConnction/mongoDB.js')
 describe('Ynet', () => {
     let articleArray;
     let num=1;
-    it('Connect DB ', async()=>{
+    before('Connect DB ', async()=>{
         await mongoDB.connectDB();
+        await browser.setWindowSize(3840, 2160);
+
+
 
     })
 

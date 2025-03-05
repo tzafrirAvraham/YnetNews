@@ -9,7 +9,7 @@ const mongoDB= require('../../mongoConnction/mongoDB.js')
 
 
 
-class sportOne {
+class channel14 {
 
 
 
@@ -41,6 +41,35 @@ class sportOne {
    //----------------------------------------------------------
    //Click
    //----------------------------------------------------------
+
+   async closeAd() {
+    try {
+        // Wait up to 10 seconds for the iframe to appear
+        const adIframe = await $('(//iframe[@aria-label="Advertisement"])[7]');
+        console.log('search for the ad')
+        if (!(await adIframe.waitForExist({ timeout: 30000 }))) {
+            console.log('No ad appeared, continuing test...');
+            console.log('ad not exist')
+            return; // Exit function if no ad
+        }
+
+        await browser.switchToFrame(adIframe); // Switch to iframe
+        console.log('switch to ad')
+
+        // Wait up to 5 seconds for the dismiss button inside the iframe
+        const dismissButton = await $("//*[@id=dismiss-button | //*[@aria-label='סגור את המודעה']");
+        if (await dismissButton.waitForDisplayed({ timeout: 5000 })) {
+            await dismissButton.click();
+            console.log('Ad closed.');
+        } else {
+            console.log('Dismiss button not found, continuing test...');
+        }
+
+        await browser.switchToFrame(null); // Switch back to main content
+    } catch (error) {
+        console.log('Error handling ad:', error.message); // Log but don't fail test
+    }
+}
 
 
 
@@ -131,8 +160,12 @@ class sportOne {
     async dataFromMainArticle(arr1,num){
         
         startStep('click on main article');
+        console.log('clicking on the first article')
         await this.MainArticlesButton.click();
         endStep();
+        console.log('close ad function')
+        await browser.pause('10000')
+        await this.closeAd();
 
         await this.printData(arr1,num);
     }
@@ -143,6 +176,7 @@ class sportOne {
         for(let i=0; i< 4; i++){
             startStep(" clicking on article number "+ (i+1));
             await BasePage.clickButton(list[i]);
+            await this.closeAd();
             await this.printData(arr1,num);
             endStep();
             num++;
@@ -210,4 +244,4 @@ class sportOne {
 
 
 }
-module.exports = new sportOne();
+module.exports = new channel14();
