@@ -23,6 +23,6 @@ const blogSchema = new mongoose.Schema(
 );
 
 
-const Isreal = mongoose.model('mako', blogSchema);
+const mako = mongoose.model('mako', blogSchema);
 //export default Ynet;
 module.exports = mako

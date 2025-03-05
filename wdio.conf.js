@@ -13,7 +13,7 @@ exports.config = {
 
     specs: [
         
-       './test/specs/**/channel14.e2e.js'
+       './test/specs/**/mako.e2e.js'
     ],
     // Patterns to exclude.
     exclude: [
