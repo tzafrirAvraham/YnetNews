@@ -1,6 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed Feb 19 11:18:11 IST 2025","Wed Feb 19 11:18:48 IST 2025","37402","","Ynet","","","","Main Article Data",""
-"passed","Wed Feb 19 11:22:59 IST 2025","Wed Feb 19 11:23:34 IST 2025","34808","","Ynet","","","","World News Data ",""
-"passed","Wed Feb 19 11:22:30 IST 2025","Wed Feb 19 11:22:59 IST 2025","29924","","Ynet","","","","Isreal News Data ",""
-"passed","Wed Feb 19 11:20:51 IST 2025","Wed Feb 19 11:22:30 IST 2025","98122","","Ynet","","","","Political News Data ",""
-"passed","Wed Feb 19 11:18:48 IST 2025","Wed Feb 19 11:20:51 IST 2025","123193","","Ynet","","","","Four Sub-Main Articles Data ",""

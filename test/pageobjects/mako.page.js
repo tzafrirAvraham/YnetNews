@@ -29,7 +29,7 @@ class mako {
 get MainArticlesButton(){ return $("//section[@class='MainItem_root__8FVmo']/article/a/div[2]");}
 get FiveSubMainArticles(){ return $$("//section[@class='FiveItemsLayout_root__A6Nh5 FiveItemsLayout_grid__vmTsN']/article/a")}
 get TwoSubMainArticles(){ return $$("//div[@class='Desktop_root__Ear5O']/div/article")}
-get ThreeSubMainArticles(){ return $$("[//section[@class='ComponentLayout_root__dDoG2']/div/article/a/figure][position() <= 3]")}
+get ThreeSubMainArticles(){ return $$("[//section[@class='ComponentLayout_root__dDoG2']/div/article/a/figure][position() <= 2]")}
 
 
 
