@@ -59,7 +59,7 @@ class mivzakimPage {
         for(let i=0; i< 5; i++){
             startStep("rotter mivzak "+ (i+1));
             let title=await helper.getTitle(listOfTitles[i]);
-            let time=await helper.getDate(listOfTimes[i]);
+            let time=await helper.getTime(listOfTimes[i]);
             await this.printData(arr1,num,title,time,author);
             endStep();
             num++;
@@ -75,7 +75,7 @@ class mivzakimPage {
         for(let i=0; i< 5; i++){
             startStep("ynet mivzak "+ (i+1));
             let title=await helper.getTitle(listOfTitles[i]);
-            let time=await helper.getDate(listOfTimes[i]);
+            let time=await helper.getTime(listOfTimes[i]);
             await this.printData(arr1,num,title,time,author);
             endStep();
             num++;
@@ -91,7 +91,7 @@ class mivzakimPage {
         for(let i=0; i< 5; i++){
             startStep("maariv mivzak "+ (i+1));
             let title=await helper.getTitle(listOfTitles[i]);
-            let time=await helper.getDate(listOfTimes[i]);
+            let time=await helper.getTime(listOfTimes[i]);
             await this.printData(arr1,num,title,time,author);
             endStep();
             num++;
@@ -107,7 +107,7 @@ class mivzakimPage {
         for(let i=0; i< 5; i++){
             startStep("walla mivzak "+ (i+1));
             let title=await helper.getTitle(listOfTitles[i]);
-            let time=await helper.getDate(listOfTimes[i]);
+            let time=await helper.getTime(listOfTimes[i]);
             await this.printData(arr1,num,title,time,author);
             endStep();
             num++;
@@ -124,7 +124,8 @@ class mivzakimPage {
             startStep("hamal mivzak "+ (i+1));
             let fullText=await helper.getTitle(listOfTitles[i]);
             let title= fullText.replace(/\d{2}:\d{2}\s*\/\s*/, "").trim();
-            let time=await helper.getDate(listOfTimes[i]);
+            let timeText=await helper.getTime(listOfTimes[i]);
+            let time=timeText.match(/\d{2}:\d{2}/)?.[0] || "00:00";
             await this.printData(arr1,num,title,time,author);
             endStep();
             num++;
