@@ -79,7 +79,7 @@ exports.config = {
 
 
 
-    logLevel: 'silent',
+    logLevel: 'debug',
  
 
 
