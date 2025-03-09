@@ -2,6 +2,7 @@ const allureReport = require("allure-commandline");
 const allure = require('@wdio/allure-reporter').default;
 const fs = require('fs');
 const path = require('path');
+const mivzakim = require("./model/mivzakim");
 const pathFile= path.join(__dirname, 'chromedriver.exe')
 
 
@@ -13,7 +14,7 @@ exports.config = {
 
     specs: [
         
-       './test/specs/**/mako.e2e.js'
+       './test/specs/**/mivzakim.e2e.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -31,6 +32,10 @@ exports.config = {
             './test/specs/isrealHyom.e2e.js',
             './test/specs/twelveTest.e2e.js',
             './test/specs/ynetTest.e2e.js'
+        ],
+
+        mivzakim: [
+            './test/specs/mivzakim.e2e.js',
         ],
     },
 
@@ -250,8 +255,18 @@ exports.config = {
     //     }
         
     // },
-    afterTest: async (test, context, { error, result, duration, passed, retries }) => {
-        if (error || result || duration || passed || (error && error.message.includes('timeout'))) {
+    // afterTest: async (test, context, { error, result, duration, passed, retries }) => {
+    //     if (error || result || duration || passed || (error && error.message.includes('timeout'))) {
+    //         await browser.takeScreenshot();
+    //     }
+    // },
+
+    afterTest: async (test, context, { error, passed }) => {
+        if (error) {  
+            console.error(`Test failed: ${test.title}, Error: ${error.message}`);
+            await browser.takeScreenshot();
+        } else if (passed) {  
+            console.log(`Test passed: ${test.title}`);
             await browser.takeScreenshot();
         }
     },

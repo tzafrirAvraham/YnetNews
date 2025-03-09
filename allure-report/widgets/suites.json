@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"total":0,"items":[]}
-=======
-{"total":1,"items":[{"uid":"3561e8bbade5c91ebe9253aa88a3ddf0","name":"Mako","statistic":{"failed":0,"broken":4,"skipped":0,"passed":0,"unknown":0,"total":4}}]}
->>>>>>> 216d0a0e4bcd7c4c2c5bc35a8df1d0d637dd42bb
+{"total":1,"items":[{"uid":"f2d0d75c56ece996f0699b26c7289bd7","name":"mivzakim","statistic":{"failed":0,"broken":0,"skipped":0,"passed":5,"unknown":0,"total":5}}]}

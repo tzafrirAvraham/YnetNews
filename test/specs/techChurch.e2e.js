@@ -1,4 +1,3 @@
-
 const techChurch= require('../pageobjects/techChurch.page')
 const {startStep, endStep, addStep} = require('@wdio/allure-reporter').default;
 const mongoose = require("mongoose");

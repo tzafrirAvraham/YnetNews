@@ -1,4 +1,5 @@
 const {startStep, endStep, addStep} = require('@wdio/allure-reporter').default;
+const BasePage= require('../test/pageobjects/base.page')
 
 
 class articleData{
@@ -20,8 +21,8 @@ class articleData{
         return subTitle
     }
 
-     async getTime(dateTimeText){
-        let temp;
+     async getTime111(dateTimeText){
+        let temp;1
         startStep('print Time text');       
         
         let status=await dateTimeText.isExisting();
@@ -35,6 +36,15 @@ class articleData{
         endStep();
         return temp;
     }
+
+    async getTime(dateTimeText){
+        
+        startStep('print Time text');       
+        let time=await BasePage.getText(dateTimeText);
+        endStep();
+        return time;
+    }
+
 
     async getDate(){
         startStep('print Time text');       

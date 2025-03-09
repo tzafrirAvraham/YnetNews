@@ -21,7 +21,7 @@ class mako {
     get summaryText(){ return $$("//section[@class='article-body']/p");}
     get imageText(){ return $("//section[@class='article-header W-pic wide']/figure/img");}
     get dateTimeText(){ return $("//span[@class='display-date']/[span[1]");}
-    get time(){return $("(//span[@class='display-date']/span[2]");}
+    get time(){return $("(//span[@class='display-date']/span)[1]");}
     //get authorsText(){return $("(//p[contains(@class, 'leading-tight')])[1]")}
     
 /////////////////////////////articles/////////////////////////////////////////////////
