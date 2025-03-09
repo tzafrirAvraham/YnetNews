@@ -12,10 +12,7 @@ describe('Ynet', () => {
     let num=1;
     before('Connect DB ', async()=>{
         await mongoDB.connectDB();
-        await browser.setWindowSize(3840, 2160);
-
-
-
+        // await browser.setWindowSize(3840, 2160);
     })
 
 

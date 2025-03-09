@@ -1,6 +1,2 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Sun Mar 09 10:20:19 IST 2025","Sun Mar 09 10:20:50 IST 2025","31657","","mivzakim","","","","rotter data",""
-"passed","Sun Mar 09 10:20:50 IST 2025","Sun Mar 09 10:21:24 IST 2025","33142","","mivzakim","","","","maariv data",""
-"passed","Sun Mar 09 10:19:50 IST 2025","Sun Mar 09 10:20:19 IST 2025","29046","","mivzakim","","","","ynet data",""
-"passed","Sun Mar 09 10:21:24 IST 2025","Sun Mar 09 10:21:55 IST 2025","31263","","mivzakim","","","","hamal data",""
-"passed","Sun Mar 09 10:21:55 IST 2025","Sun Mar 09 10:22:26 IST 2025","31027","","mivzakim","","","","walla data",""
+"passed","Sun Mar 09 12:29:18 IST 2025","Sun Mar 09 12:30:23 IST 2025","65231","","Ynet","","","","Main Article Data",""

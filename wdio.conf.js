@@ -14,7 +14,7 @@ exports.config = {
 
     specs: [
         
-       './test/specs/**/mivzakim.e2e.js'
+       './test/specs/**/ynetTest.e2e.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -31,7 +31,7 @@ exports.config = {
         israelHayomN12AndNow14: [
             './test/specs/isrealHyom.e2e.js',
             './test/specs/twelveTest.e2e.js',
-            './test/specs/channel14.e2e.js'
+            // './test/specs/channel14.e2e.js'
         ],
 
         mivzakim: [
