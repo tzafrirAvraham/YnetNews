@@ -137,8 +137,12 @@ class mivzakimPage {
 
 
     async printData(arr1,num, title1, time1,author1){
+
+        let date= "NULL";
+        let image= "NULL";
+        let video= "NULL";
    
-        arr1=[{title:title1,time:time1,author:author1,count: num}];
+        arr1=[{title:title1,time:time1,author:author1,num: num, date: date, image: image, video: video}];
  
         startStep('push the data to mongoos database')
         await mongoDB.CreateOrUpdate(num,mivzakim,arr1)

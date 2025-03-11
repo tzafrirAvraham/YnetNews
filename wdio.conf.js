@@ -14,7 +14,7 @@ exports.config = {
 
     specs: [
         
-       './test/specs/**/ynetTest.e2e.js'
+       './test/specs/**/mivzakim.e2e.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -86,7 +86,7 @@ exports.config = {
     bail: 0,
  
 
-    baseUrl: 'https://www.ynet.co.il/home/0,7340,L-8,00.html',
+    //baseUrl: 'https://www.ynet.co.il/home/0,7340,L-8,00.html',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 2*60*1000,
@@ -205,7 +205,7 @@ exports.config = {
      * @param {object}         browser      instance of created browser/device session
      */
     before: async function (capabilities, specs) {
-        await browser.url("/news");
+        // await browser.url("/news");
         await browser.maximizeWindow();
         //await browser.minimizeWindow();
     },

@@ -12,7 +12,10 @@ const blogSchema = new mongoose.Schema(
     title: String,//[{type: String}],
     time: String,//[{type: String}],
     author:String,//[{type: String}],
-    count: Number,//[{type: Number}]
+    num: Number,//[{type: Number}],
+    date:String,//[{type: String}],
+    image:String,//[{type: String}],
+    video:String,//[{type: String}]
 }
 );
 

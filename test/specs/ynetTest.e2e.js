@@ -13,7 +13,11 @@ describe('Ynet', () => {
     before('Connect DB ', async()=>{
         await mongoDB.connectDB();
         // await browser.setWindowSize(3840, 2160);
+        startStep('open one website');
+        await browser.url('https://www.ynet.co.il/news');
+        endStep();
     })
+    
 
 
 
