@@ -145,7 +145,7 @@ class mivzakimPage {
         arr1=[{title:title1,time:time1,author:author1,num: num, date: date, image: image, video: video}];
  
         startStep('push the data to mongoos database')
-        await mongoDB.CreateOrUpdate(num,mivzakim,arr1)
+        await mongoDB.CreateOrUpdateByNum(num,mivzakim,arr1)
         endStep();
 
         await browser.pause(4000);

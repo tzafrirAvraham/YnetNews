@@ -34,6 +34,29 @@ class mongoDB{
         }
         
     }
+
+    async CreateOrUpdateByNum(num,modelName,arr){
+        const filter = { num: num.toString() };
+        let doc1=await modelName.findOne(filter);
+        //console.log("filter - "+doc1);;
+        //create section
+        if (doc1== null){
+            startStep('go to create section')
+            console.log("there is no artice found - "+doc1);
+            await modelName.create(arr[0]);
+            console.log("Insert "+num+" verify")
+            endStep();
+        }
+        // update section
+        else{
+            startStep('go to update section')
+            //console.log("filter - "+doc1);
+            await modelName.findOneAndUpdate(filter, arr[0]);
+            console.log("Update "+num+" verify")
+            endStep();
+        }
+        
+    }
 }
 
 
