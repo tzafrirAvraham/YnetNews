@@ -117,7 +117,8 @@ class mivzakimPage {
     
         for(let i=0; i< 5; i++){
             startStep("walla mivzak "+ (i+1));
-            let title=await helper.getTitle(listOfTitles[i]);
+            let titleWalla=await helper.getTitle(listOfTitles[i]);
+            let title= titleWalla.replace(/\d{2}:\d{2}\s*\/\s*/, "").trim();gi
             let time=await helper.getTime(listOfTimes[i]);
             await this.printData(arr1,num,title,time,author,"NULL");
             endStep();
