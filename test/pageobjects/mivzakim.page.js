@@ -41,8 +41,19 @@ class mivzakimPage {
     
 
 
+    //----------------------------------------------------------
+    //Actions (isExist)
+    //----------------------------------------------------------
    
-
+    async getHamalImageSrc(i) {
+        const imageElement = await $(`//article[${i}]//*[contains(@class, 'imageContainer')]/img`);
+    
+        if (await imageElement.isExisting()) {
+            return await imageElement.getAttribute('src');
+        } else {
+            return "NULL";
+        }
+    }
     //----------------------------------------------------------
     //Actions (Data)
     //----------------------------------------------------------
@@ -60,7 +71,7 @@ class mivzakimPage {
             startStep("rotter mivzak "+ (i+1));
             let title=await helper.getTitle(listOfTitles[i]);
             let time=await helper.getTime(listOfTimes[i]);
-            await this.printData(arr1,num,title,time,author);
+            await this.printData(arr1,num,title,time,author,"NULL");
             endStep();
             num++;
             
@@ -76,7 +87,7 @@ class mivzakimPage {
             startStep("ynet mivzak "+ (i+1));
             let title=await helper.getTitle(listOfTitles[i]);
             let time=await helper.getTime(listOfTimes[i]);
-            await this.printData(arr1,num,title,time,author);
+            await this.printData(arr1,num,title,time,author,"NULL");
             endStep();
             num++;
             
@@ -92,7 +103,7 @@ class mivzakimPage {
             startStep("maariv mivzak "+ (i+1));
             let title=await helper.getTitle(listOfTitles[i]);
             let time=await helper.getTime(listOfTimes[i]);
-            await this.printData(arr1,num,title,time,author);
+            await this.printData(arr1,num,title,time,author,"NULL");
             endStep();
             num++;
             
@@ -108,7 +119,7 @@ class mivzakimPage {
             startStep("walla mivzak "+ (i+1));
             let title=await helper.getTitle(listOfTitles[i]);
             let time=await helper.getTime(listOfTimes[i]);
-            await this.printData(arr1,num,title,time,author);
+            await this.printData(arr1,num,title,time,author,"NULL");
             endStep();
             num++;
             
@@ -126,7 +137,8 @@ class mivzakimPage {
             let title= fullText.replace(/\d{2}:\d{2}\s*\/\s*/, "").trim();
             let timeText=await helper.getTime(listOfTimes[i]);
             let time=timeText.match(/\d{2}:\d{2}/)?.[0] || "00:00";
-            await this.printData(arr1,num,title,time,author);
+            let image= await this.getHamalImageSrc(i+1)
+            await this.printData(arr1,num,title,time,author,image);
             endStep();
             num++;
             
@@ -136,10 +148,10 @@ class mivzakimPage {
     
 
 
-    async printData(arr1,num, title1, time1,author1){
+    async printData(arr1,num, title1, time1,author1,image){
 
         let date= "NULL";
-        let image= "NULL";
+        // let image= "NULL";
         let video= "NULL";
    
         arr1=[{title:title1,time:time1,author:author1,num: num, date: date, image: image, video: video}];
