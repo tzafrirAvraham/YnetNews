@@ -28,18 +28,18 @@ describe('Ynet', () => {
         
         endStep();
         await ynetPage.printData(articleArray,num); 
-        num++;
     })
 
    
 
     it('Four Sub-Main Articles Data ', async()=>{
-        
+        num =2
         await ynetPage.dataFromMainSubTitleArticle(articleArray,num);
-        num+= await ynetPage.subArticlesButton.length;        
     })
 
+
     it('Political News Data ', async()=>{
+        num=6
         articleArray=[];        
         await ynetPage.dataFromPoliticalArticle(articleArray,num);        
         num+=1;
@@ -47,6 +47,7 @@ describe('Ynet', () => {
     })
 
     it('Isreal News Data ', async()=>{
+        num= 9
         articleArray=[];
 
         await ynetPage.dataFromIsrealNewsArticle(articleArray,(num+2));
@@ -54,6 +55,7 @@ describe('Ynet', () => {
     })
 
     it('World News Data ', async()=>{
+        num= 10
         articleArray=[];
   
         await ynetPage.dataFromWorldNewsArticle(articleArray,(num+3));

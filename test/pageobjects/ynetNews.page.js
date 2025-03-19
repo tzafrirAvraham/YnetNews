@@ -147,9 +147,9 @@ class ynetNewsPage {
         
         let list= await this.subArticlesButton;
         
-        for(let i= 0; i< list.length ; i++){
+        for(let i= 0; i< 4 ; i++){
             startStep(" clicking on article number "+ (i+1));
-            console.log("List "+i+" "+list[i].getText());
+            // console.log("List "+i+" "+list[i].getText());
             console.log("num "+num);
            
             await BasePage.clickButton(list[i]);
