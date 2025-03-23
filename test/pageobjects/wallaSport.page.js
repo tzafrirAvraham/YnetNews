@@ -18,7 +18,7 @@ class wallaSport {
     get titleText(){ return $("//h1[contains(@class, 'title')]");}
     get subTitleText(){ return $("//h2[contains(@class, 'subtitle')]");}
     get date(){return $("//*[contains(@class, 'date-and-time-p')]")} //date inside the attribure title
-    get summaryText(){ return $$("(//img[@srcset])[1]");}
+    get summaryText(){ return $$("//*[@class='article_speakable']");}
     get imageText(){ return $("(//*[contains(@class,'article-image')]/img)[1] | (//*[contains(@class,'ratio-desktop')]/img)[1]");}
     //get dateTimeText(){ return $("span[class='single-post-meta-dates']");}
     get time(){return $("//*[contains(@class, 'date-and-time-p')]");}
