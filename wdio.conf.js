@@ -4,6 +4,13 @@ const fs = require('fs');
 const path = require('path');
 const mivzakim = require("./model/mivzakim");
 const pathFile= path.join(__dirname, 'chromedriver.exe')
+const ports = {
+    ynetWallaAndOne: 3001,
+    israelHayomN12AndNow14: 3002,
+    mivzakim: 3003
+};
+
+const suiteName = process.env.SUITE_NAME;
 
 
 
@@ -107,7 +114,8 @@ exports.config = {
         // logFileName: 'wdio-chromedriver.log', // default
         // outputDir: 'driver-logs', // overwrites the config.outputDir
         // args: ['--silent'],
-        chromedriverCustomPath: pathFile
+        chromedriverCustomPath: pathFile,
+        port: suiteName && ports[suiteName] ? ports[suiteName] : 9515  // ברירת מחדל 9515
       }]],
 
     // Framework you want to run your specs with.
@@ -195,18 +203,7 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      * @param {string} cid worker id (e.g. 0-0)
      */
-    beforeSession: function (config, capabilities, specs, cid) {
-        // מיפוי פורטים לכל סוויטה
-        const ports = {
-            ynetWallaAndOne: 3001,
-            israelHayomN12AndNow14: 3002,
-            mivzakim: 3003
-        };
-
-        // קביעת שם הסוויטה שהורצה דרך Jenkins או CLI
-        const suiteName = config.suite;;
-
-        // הגדרת baseUrl בהתאם לסוויטה
+    beforeSession: function (config) {
         if (suiteName && ports[suiteName]) {
             config.baseUrl = `http://localhost:${ports[suiteName]}`;
             console.log(`Running suite: ${suiteName}, Base URL: ${config.baseUrl}`);
