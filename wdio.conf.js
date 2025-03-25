@@ -115,7 +115,7 @@ exports.config = {
         // outputDir: 'driver-logs', // overwrites the config.outputDir
         // args: ['--silent'],
         chromedriverCustomPath: pathFile,
-        port: suiteName && ports[suiteName] ? ports[suiteName] : 9515  // ברירת מחדל 9515
+        port: 3001,
       }]],
 
     // Framework you want to run your specs with.
