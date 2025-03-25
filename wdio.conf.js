@@ -195,8 +195,25 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      * @param {string} cid worker id (e.g. 0-0)
      */
-    // beforeSession: function (config, capabilities, specs, cid) {
-    // },
+    beforeSession: function (config, capabilities, specs, cid) {
+        // מיפוי פורטים לכל סוויטה
+        const ports = {
+            ynetWallaAndOne: 3001,
+            israelHayomN12AndNow14: 3002,
+            mivzakim: 3003
+        };
+
+        // קביעת שם הסוויטה שהורצה דרך Jenkins או CLI
+        const suiteName = config.suite;;
+
+        // הגדרת baseUrl בהתאם לסוויטה
+        if (suiteName && ports[suiteName]) {
+            config.baseUrl = `http://localhost:${ports[suiteName]}`;
+            console.log(`Running suite: ${suiteName}, Base URL: ${config.baseUrl}`);
+        } else {
+            console.warn('SUITE_NAME not provided or invalid. Using default baseUrl.');
+        }
+    },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
      * variables like `browser`. It is the perfect place to define custom commands.
@@ -206,7 +223,7 @@ exports.config = {
      */
     before: async function (capabilities, specs) {
         // await browser.url("/news");
-        await browser.maximizeWindow();
+        // await browser.maximizeWindow();
         //await browser.minimizeWindow();
     },
     /**
