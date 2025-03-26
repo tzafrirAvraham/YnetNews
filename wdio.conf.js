@@ -120,6 +120,7 @@ exports.config = {
       }]],
 
       baseUrl: `http://localhost:${selectedPort}`,
+      ///set SUITE_NAME=mivzakim && npx wdio wdio.conf.js --suite mivzakim
 
 
     // Framework you want to run your specs with.
