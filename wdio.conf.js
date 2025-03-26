@@ -11,6 +11,8 @@ const ports = {
 };
 
 const suiteName = process.env.SUITE_NAME;
+const selectedPort = suiteName && ports[suiteName] ? ports[suiteName] : 9517; // ברירת מחדל 9515 אם אין התאמה
+
 
 
 
@@ -111,12 +113,14 @@ exports.config = {
     // commands. Instead, they hook themselves up into the test process.
     // services: [],
     services: [['chromedriver', {
-        // logFileName: 'wdio-chromedriver.log', // default
-        // outputDir: 'driver-logs', // overwrites the config.outputDir
-        // args: ['--silent'],
+        port: selectedPort,  // שימוש בפורט לפי הסוויטה
+        logFileName: `wdio-chromedriver-${suiteName || 'default'}.log`,
+        useSingleDriver: false,
         chromedriverCustomPath: pathFile,
-        port: 3001,
       }]],
+
+      baseUrl: `http://localhost:${selectedPort}`,
+
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -203,14 +207,14 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      * @param {string} cid worker id (e.g. 0-0)
      */
-    beforeSession: function (config) {
-        if (suiteName && ports[suiteName]) {
-            config.baseUrl = `http://localhost:${ports[suiteName]}`;
-            console.log(`Running suite: ${suiteName}, Base URL: ${config.baseUrl}`);
-        } else {
-            console.warn('SUITE_NAME not provided or invalid. Using default baseUrl.');
-        }
-    },
+    // beforeSession: function (config) {
+    //     if (suiteName && ports[suiteName]) {
+    //         config.baseUrl = `http://localhost:${ports[suiteName]}`;
+    //         console.log(`Running suite: ${suiteName}, Base URL: ${config.baseUrl}`);
+    //     } else {
+    //         console.warn('SUITE_NAME not provided or invalid. Using default baseUrl.');
+    //     }
+    // },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
      * variables like `browser`. It is the perfect place to define custom commands.
