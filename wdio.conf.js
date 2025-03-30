@@ -4,14 +4,6 @@ const fs = require('fs');
 const path = require('path');
 const mivzakim = require("./model/mivzakim");
 const pathFile= path.join(__dirname, 'chromedriver.exe')
-const ports = {
-    ynetWallaAndOne: 3001,
-    israelHayomN12AndNow14: 3002,
-    mivzakim: 3003
-};
-
-const suiteName = process.env.SUITE_NAME;
-const selectedPort = suiteName && ports[suiteName] ? ports[suiteName] : 9517; // ברירת מחדל 9515 אם אין התאמה
 
 
 
@@ -113,13 +105,14 @@ exports.config = {
     // commands. Instead, they hook themselves up into the test process.
     // services: [],
     services: [['chromedriver', {
-        port: selectedPort,  // שימוש בפורט לפי הסוויטה
-        logFileName: `wdio-chromedriver-${suiteName || 'default'}.log`,
+   
         useSingleDriver: false,
         chromedriverCustomPath: pathFile,
+        port: 1234,
       }]],
+      port: 5126,
 
-      baseUrl: `http://localhost:${selectedPort}`,
+     
       ///set SUITE_NAME=mivzakim && npx wdio wdio.conf.js --suite mivzakim
 
 
@@ -179,6 +172,8 @@ exports.config = {
         if(fs.existsSync("./allure-results")){
             fs.rmSync("./allure-results", {recursive: true});
         }
+        console.log(`WebdriverIO is running on port ${config.port}`);
+
     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service

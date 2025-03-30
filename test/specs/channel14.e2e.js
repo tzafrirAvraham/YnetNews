@@ -14,6 +14,8 @@ describe('channel14', () => {
         endStep();
         startStep('open now14 website');
         await browser.url('https://www.now14.co.il/');
+        await browser.maximizeWindow();
+
         endStep();
     })
 

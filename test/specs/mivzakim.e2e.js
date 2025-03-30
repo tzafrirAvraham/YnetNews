@@ -16,12 +16,21 @@ describe('mivzakim', () => {
 
 
 
-    it('ynet data', async()=>{
-        startStep('open ynet-mivzakim website');
-        await browser.url('https://www.ynet.co.il/news/category/184');
+    // it('ynet data', async()=>{
+    //     startStep('open ynet-mivzakim website');
+    //     await browser.url('https://www.ynet.co.il/news/category/184');
+    //     endStep();
+
+    //     await mivzakin.dataFromYnet(articleArray,num,);
+    //     //num++;
+    // });
+
+    it('israel hayom data', async()=>{
+        startStep('open israel hayom-mivzakim website');
+        await browser.url('https://www.israelhayom.co.il/israelnow');
         endStep();
 
-        await mivzakin.dataFromYnet(articleArray,num,);
+        await mivzakin.dataFromIsraelHayom(articleArray,num,);
         //num++;
     });
 

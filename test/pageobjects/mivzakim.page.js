@@ -38,11 +38,15 @@ class mivzakimPage {
 
     get hamalTitleText(){ return $$("(//*[contains(@class, 'styles_titleContainer')])[position() <= 5]");}
     get hamalTime(){return $$("(//*[contains(@class, 'styles_date_')])[position() <= 5]");}
+////////////////////////////////////////israel hayom///////////////////////////////////////////////////
+
+    get israelhayomTitle(){return $$("(//*[@class='israel-now-main-flash'])[position() <= 5]");}
+    get israelHayomTime(){return $$("(//*[@class='israel-now-flash-time-text'])[position() <= 5]");}
     
 
 
     //----------------------------------------------------------
-    //Actions (isExist)
+    //Actions (isImageExist)
     //----------------------------------------------------------
    
     async getHamalImageSrc(i) {
@@ -50,6 +54,17 @@ class mivzakimPage {
     
         if (await imageElement.isExisting()) {
             return await imageElement.getAttribute('src');
+        } else {
+            return "NULL";
+        }
+    }
+
+    async getIsraelHayomImageSrc(i) {
+        const imageElement = await $(`(//*[contains(@class, 'israel-now-flash-component')])[${i}]/div[2]/a/img`);
+    
+        if (await imageElement.isExisting()) {
+            let image= await imageElement.getAttribute('src');
+            return 'https://www.israelhayom.co.il/'+image
         } else {
             return "NULL";
         }
@@ -145,6 +160,24 @@ class mivzakimPage {
             
         }
     }
+
+    async dataFromIsraelHayom(arr1,num){
+        let listOfTitles= await this.israelhayomTitle;
+        let listOfTimes= await this.israelHayomTime;
+        const author='israelHayom'
+    
+        for(let i=0; i< 5; i++){
+            startStep("hamal mivzak "+ (i+1));
+            let title=await helper.getTitle(listOfTitles[i]);
+            let time=await helper.getTime(listOfTimes[i]);
+            let image= await this.getHamalImageSrc(i+1)
+            await this.printData(arr1,num,title,time,author,image);
+            endStep();
+            num++;
+            
+        }
+    }
+
 
     
 

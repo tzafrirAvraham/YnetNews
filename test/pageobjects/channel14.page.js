@@ -165,7 +165,7 @@ class channel14 {
         endStep();
         console.log('close ad function')
         await browser.pause('10000')
-        await this.closeAd();
+        // await this.closeAd();
 
         await this.printData(arr1,num);
     }
@@ -176,7 +176,7 @@ class channel14 {
         for(let i=0; i< 4; i++){
             startStep(" clicking on article number "+ (i+1));
             await BasePage.clickButton(list[i]);
-            await this.closeAd();
+            // await this.closeAd();
             await this.printData(arr1,num);
             endStep();
             num++;
