@@ -32,7 +32,7 @@ exports.config = {
         israelHayomN12AndNow14: [
             './test/specs/isrealHyom.e2e.js',
             './test/specs/twelveTest.e2e.js',
-            // './test/specs/channel14.e2e.js'
+            './test/specs/geektime.e2e.js'
         ],
 
         mivzakim: [

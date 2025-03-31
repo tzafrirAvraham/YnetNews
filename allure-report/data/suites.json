@@ -1,1 +1,1 @@
-{"uid":"98d3104e051c652961429bf95fa0b5d6","name":"suites","children":[]}
+{"uid":"98d3104e051c652961429bf95fa0b5d6","name":"suites","children":[{"name":"geektime","children":[{"name":"10 Article Data","uid":"c7ea0be22dadbef","parentUid":"bcf0805f4fe36826e9f74d812c2d1762","status":"passed","time":{"start":1743443464578,"stop":1743443912479,"duration":447901},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":0,"retriesStatusChange":false,"parameters":["chrome-134.0.6998.118"],"tags":[]}],"uid":"bcf0805f4fe36826e9f74d812c2d1762"}]}
